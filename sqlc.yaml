@@ -1,0 +1,16 @@
+version: "1"
+packages:
+  - name: "db"
+    path: "./db/sqlc"
+    queries: "./db/query"
+    schema: "./db/migration"
+    engine: "postgresql"
+    emit_json_tags: true
+    emit_prepared_queries: false
+    emit_interface: true
+    emit_exact_table_names: false
+    emit_empty_slices: true
+
+# path: where to store generated go file
+# query: where to find query file
+# schema; directory of SQL migrations or path to single SQL file; or a list of paths
