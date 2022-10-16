@@ -3,12 +3,15 @@ module github.com/Xiongkai-Wang/kaibank
 go 1.19
 
 require (
+	github.com/google/uuid v1.3.0
 	github.com/lib/pq v1.10.7
 	github.com/spf13/viper v1.13.0
-	github.com/techschool/simplebank v0.0.0-20221016071620-cb29a1d43626
 )
 
-require github.com/fsnotify/fsnotify v1.5.4 // indirect
+require (
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
+	github.com/fsnotify/fsnotify v1.5.4 // indirect
+)
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
