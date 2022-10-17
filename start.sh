@@ -8,4 +8,4 @@ source /app/app.env
 
 echo "start the app"
 exec "$@"
-# "$@" means get all argument passed and run it
+# "$@" means get all argument passed and run it#
