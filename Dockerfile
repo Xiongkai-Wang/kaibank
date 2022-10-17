@@ -3,6 +3,8 @@ FROM golang:1.19-alpine3.16 AS builder
 WORKDIR /app
 COPY . .
 RUN go build -o main main.go
+# RUN apk add curl
+# RUN cur -L https://github.com/golang-migrate/migrate/releases/download/v4.14.1/migrate.linux-amd64.tar.gz | tar xvz
 # FROM: imageVersion
 # WORKDIR : working dir inside image
 # COPY: data from currentPath(in host) to imagePath
@@ -12,12 +14,16 @@ FROM alpine:3.16
 WORKDIR /app
 COPY --from=builder /app/main .
 COPY app.env .
+COPY start.sh .
+COPY wait-for.sh .
 COPY db/migration ./db/migration
+
 # multiple stage: copy --from=builder: copy compiled binary file only
 # donot have to inherite all files from last stage(build), only copy the target you want 
 
 EXPOSE 8080
 CMD [ "/app/main" ]
+ENTRYPOINT ["/app/start.sh"]
 # RUN, ENTRYPOINT和CMD都是在docker image里执行一条命, 但有一些微妙的区别
 # besides, CMD和ENTRYPOINT组合起来使用, 完成更加丰富的功能
 # RUN命令执行命令并创建新的镜像层，通常用于安装软件包/or 构建多层image时build前面的层
