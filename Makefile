@@ -24,4 +24,7 @@ sqlc:
 test:
 	go test ./...
 
+dockerbuild:
+	docker build -t kaibank:latest .
+
 .PHONY: postgres createdb dropdb migrateup migratedown sqlc test
