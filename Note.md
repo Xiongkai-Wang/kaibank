@@ -120,7 +120,10 @@ the external IP is long and not static ---> buy domain name
 
 `ingress.yaml` :use Ingress to route traffics to different services
 
+to stop: `kubectl scale deploy kai-bank-api-deployment  --replicas=0`
+
 ### another useful kube tool: 
 `brew install k9s`  `k9s` to enter
 :service
 :deployment -> api -> logs
+:pod d:describe
