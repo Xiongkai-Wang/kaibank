@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kai-bank-api-deployment
+  labels:
+    app: kai-bank-api
+spec:
+  replicas: 1
+  selector: # how to find pods rule
+    matchLabels:
+      app: kai-bank-api
+  template:
+    metadata:  
+      labels: # Pods are labeled as 
+        app: kai-bank-api
+    spec:
+      containers:
+      - name: kai-bank-api
+        image: 402167448073.dkr.ecr.us-east-2.amazonaws.com/kaibank:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080

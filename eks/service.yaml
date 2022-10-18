@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kai-bank-service
+spec:
+  selector:
+    app: kai-bank-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080 # where request sent to: container port
+  type: LoadBalancer 
+  # ClusterIP: allow internal visit only; LoadBalancer: to have external IP to provide outside visit; 
